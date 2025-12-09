@@ -1,0 +1,182 @@
+       <div class="container">
+            <div class="car-detail">
+            <div class="car-detail__main">
+              <div class="car-detail__header">
+                <div class="car-detail__plate">{{digits}}</div>
+              </div>
+
+              <div class="car-detail__content">
+                <div class="car-detail__photo">
+                  {{#if photo_url}}
+                   <img src="{{photo_url}}" alt="{{model}}" class="car-deatail__img"  width="220px"
+                    height="160px">
+                 {{else}}
+                   <div class="car-detail__photo">
+                                      <svg viewBox="0 0 24 24">
+                    <path
+                      d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                    />
+                  </svg>
+                    Фото отсутствует
+                   </div>
+                 {{/if}}
+                </div>
+
+                <div class="car-detail__info">
+                  <div>
+                    <h3 class="info-block__title">Основная информация</h3>
+                    <div class="info-block__grid">
+                      <div class="info-block__row">
+                        <div class="info-block__label">Марка</div>
+                        {{#if vendor}}
+  <div class="info-block__value">{{vendor}}</div>
+{{else}}
+  <div class="info-block__value info-block__value--empty">—</div>
+{{/if}}
+                      </div>
+                      <div class="info-block__row">
+                        <div class="info-block__label">Модель</div>
+                        {{#if model}}
+  <div class="info-block__value">{{model}}</div>
+{{else}}
+  <div class="info-block__value info-block__value--empty">—</div>
+{{/if}}
+                      </div>
+                      <div class="info-block__row">
+                        <div class="info-block__label">Год выпуска</div>
+                        <div class="info-block__value">{{model_year}}</div>
+                      </div>
+                      <div class="info-block__row">
+                        <div class="info-block__label">VIN-код</div>
+                        {{#if vin}}
+  <div class="info-block__value">{{vin}}</div>
+{{else}}
+  <div class="info-block__value info-block__value--empty">—</div>
+{{/if}}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 class="info-block__title">Регион регистрации</h3>
+                    <div class="info-block__grid">{{#if region}}
+  <div class="info-block__row">
+    <div class="info-block__label">Название (RU)</div>
+    <div class="info-block__value">{{region.name}}</div>
+  </div>
+  <div class="info-block__row">
+    <div class="info-block__label">Название (UA)</div>
+    <div class="info-block__value">{{region.name_ua}}</div>
+  </div>
+  <div class="info-block__row">
+    <div class="info-block__label">Старый код</div>
+    <div class="info-block__value">{{region.old_code}}</div>
+  </div>
+  <div class="info-block__row">
+    <div class="info-block__label">Новый код</div>
+    <div class="info-block__value">{{region.new_code}}</div>
+  </div>
+{{else}}
+  <div class="info-block__row">
+    <div class="info-block__label">Название (RU)</div>
+    <div class="info-block__value info-block__value--empty">—</div>
+  </div>
+  <div class="info-block__row">
+    <div class="info-block__label">Название (UA)</div>
+    <div class="info-block__value info-block__value--empty">—</div>
+  </div>
+  <div class="info-block__row">
+    <div class="info-block__label">Старый код</div>
+    <div class="info-block__value info-block__value--empty">—</div>
+  </div>
+  <div class="info-block__row">
+    <div class="info-block__label">Новый код</div>
+    <div class="info-block__value info-block__value--empty">—</div>
+  </div>
+{{/if}}
+                    </div>
+                    <div class="theft-block">
+                      <span class="theft-title"> Статус угона </span>
+                                              {{#if is_stolen}}
+                      <div class="theft-status red">В угоне</div>
+{{else}}
+                        <div class="theft-status">Не в угоне</div>
+{{/if}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="history-block">
+              <div class="history-block__header">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21a9 9 0 0 0 0-18z"
+                  />
+                </svg>
+                История регистрационных действий
+              </div>
+                              {{#if operations}}
+    <ul class="history-block__list">
+      {{#each operations}}
+        <li class="history-block__item">
+          <div class="history-block__date">
+            {{registered_at}} 
+          </div>
+          <div class="history-block__content">
+            <div class="history-block__operation">
+              {{operation.ua}}
+              {{#if operation_group.ua}}
+                <span class="history-block__group">({{operation_group.ua}})</span>
+              {{/if}}
+            </div>
+            <div class="history-block__details">
+              {{#if address}}{{address}}, {{/if}}
+              {{#if department}}Подразделение: {{department}}{{/if}}
+            </div>
+          </div>
+          {{#if is_last}}
+          <div class="history-block__wrapper">
+                        <div class="history-block__badge">Текущий владелец</div>
+          </div>
+          {{/if}}
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <div class="history-block__empty">
+      Нет данных об операциях
+    </div>
+  {{/if}}
+</div>
+ <div class="comments-block">
+              <div class="comments-block__header">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"
+                  />
+                </svg>
+                Комментарии пользователей
+              </div>
+             {{#if comments}}
+    <ul class="comments-block__list">
+      {{#each comments}}
+        <li class="comments-block__item">
+          <div class="comments-block__author">
+            {{name}}
+            <span class="comments-block__date">
+              {{formatDate created_at}}
+            </span>
+          </div>
+          <div class="comments-block__text">
+            {{text}}
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <div class="comments-block__empty">Нет комментариев</div>
+  {{/if}}
+            </div>
+          </div>
+        </div>

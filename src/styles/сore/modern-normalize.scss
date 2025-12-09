@@ -1,0 +1,226 @@
+/*
+===============================================================
+Global box sizing & root improvements
+===============================================================
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: none;
+}
+html {
+  min-height: 100dvh;
+  /* Enable automatic dark‑mode UA themes where supported */
+  color-scheme: light dark;
+  -webkit-text-size-adjust: 100%; /* Prevent font size boost on rotation (iOS) */
+  text-size-adjust: 100%;
+  tab-size: 2;
+}
+
+/*
+===============================================================
+Core document defaults
+===============================================================
+*/
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100dvh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased; /* Better font render on macOS */
+  text-rendering: optimizeLegibility;
+}
+
+/* Lock scroll when any <dialog open> is present */
+body:has(dialog[open]) {
+  overflow: hidden;
+  height: 100dvh;
+}
+
+/*
+===============================================================
+Accessibility helpers
+===============================================================
+*/
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Respect users that navigate with keyboard */
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/*
+===============================================================
+Typography
+===============================================================
+*/
+
+a {
+  text-decoration: none;
+}
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo,
+    monospace;
+  font-size: 1em;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+===============================================================
+Tables
+===============================================================
+*/
+
+table {
+  border-collapse: collapse;
+  border-color: currentColor;
+}
+
+/*
+===============================================================
+Forms & controls
+===============================================================
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  border: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  appearance: button;
+}
+
+:-moz-focusring {
+  outline: auto;
+}
+
+:disabled {
+  cursor: not-allowed;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/* Modern file upload button */
+::file-selector-button {
+  appearance: button;
+  font: inherit;
+}
+
+/* Search inputs */
+[type='search'] {
+  appearance: textfield;
+  outline-offset: -2px;
+}
+
+::-webkit-search-decoration {
+  appearance: none;
+}
+
+/*
+===============================================================
+Interactive & structural
+===============================================================
+*/
+
+details,
+summary {
+  display: block;
+}
+
+summary {
+  cursor: pointer;
+  list-style: none; /* Remove default triangle disclosure icon */
+}
+
+dialog {
+  border: 0;
+  padding: 0;
+  margin: auto;
+}
