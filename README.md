@@ -5,9 +5,9 @@
 [![Handlebars](https://img.shields.io/badge/Handlebars-Templating-orange)](https://handlebarsjs.com/)
 [![DOMPurify](https://img.shields.io/badge/Security-DOMPurify-green)](https://github.com/cure53/DOMPurify)
 
-**Проверка истории автомобиля по номеру** через открытые API ГАИ Украины  
+**Проверка истории автомобиля по номеру** через открытoе API ГАИ Украины  
 
-**Демо:** → [(https://gai-base.vercel.app/)](https://gai-base.vercel.app/))
+**Демо:** → [https://gai-project-api.vercel.app/]
 ## Особенности
 
 - Автоматическая маска номера (XX0000XX)  
