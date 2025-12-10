@@ -1,5 +1,3 @@
-# (ГАИ API)
-
 [![Vercel Deploy](https://img.shields.io/badge/Vercel-Deployed-black?logo=vercel)](https://project-api-fioneo.vercel.app)
 [![Vanilla JS](https://img.shields.io/badge/Vanilla-JS-blue)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Handlebars](https://img.shields.io/badge/Handlebars-Templating-orange)](https://handlebarsjs.com/)
