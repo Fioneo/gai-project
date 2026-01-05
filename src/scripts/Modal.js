@@ -52,11 +52,13 @@ export default class Modal {
     if (this.modalElement) {
       this.modalElement.classList.toggle('is-open');
     }
+    document.body.classList.remove('is-open');
   }
   openModal() {
     if (this.modalElement) {
       this.modalElement.classList.toggle('is-open');
     }
+    document.body.classList.add('is-open');
   }
   async collectData(data) {
     const { top_new_cars, top_new_vendors, top_secondary_vendors } = data;
@@ -147,7 +149,6 @@ export default class Modal {
       secondProdRegs[index].textContent = vendor.registration;
     });
     this.hideLoader();
-    document.body.classList.add('is-open');
     this.openModal();
   }
 }
