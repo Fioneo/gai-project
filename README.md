@@ -15,6 +15,6 @@
 - AA9899OP
 - BC7209PO 
 - АХ0053ЕЕ 
-- BC0729PO
+- BC9710TI
 
 **API:** [`baza-gai.com.ua`](https://baza-gai.com.ua/api) — открытая база номеров ГАИ Украины
